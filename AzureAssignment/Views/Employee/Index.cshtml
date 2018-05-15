@@ -12,6 +12,10 @@
             <th>Name</th>
             <th>Age</th>
             <th>Date of Birth</th>
+            <th>Address</th>
+            <th>Is Active</th>
+            <th></th>
+           
         </tr>
     </thead>
     <tbody>
@@ -21,6 +25,10 @@
                 <td>@string.Format("{0} {1}", @employee.FName, @employee.LName) </td>
                 <td>@employee.Age</td>
                 <td>@employee.DateOfBirth</td>
+                <td>@employee.Address</td>
+                <td>@employee.IsActive</td>
+                <td>@Html.ActionLink("Edit","Edit",new { id = employee.Id})</td>
+                
             </tr>
 
         }

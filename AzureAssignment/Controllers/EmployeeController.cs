@@ -22,6 +22,32 @@ namespace AzureAssignment.Controllers
         {
             return View("EmployeeForm",new Employee());
         }
+
+        [HttpPost]
+        public ActionResult Save(Employee emp)
+        {
+            if (emp.Id == 0)
+            {
+                _context.Employees.Add(emp);
+            }
+            else
+            {
+                var employeeinDb = _context.Employees.Single(e => e.Id == emp.Id);
+                TryUpdateModel(employeeinDb);
+            }
+            _context.SaveChanges();
+            return   RedirectToAction("Index", "Employee");    
+            
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var employee = _context.Employees.SingleOrDefault(x => x.Id == id);
+            if (employee == null)
+                return HttpNotFound();
+
+            return View("EmployeeForm",employee);
+        }
         // GET: Employee
         public ActionResult Index()
         {

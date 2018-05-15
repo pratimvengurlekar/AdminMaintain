@@ -157,6 +157,10 @@
     <Compile Include="Migrations\201805141222529_Added Employee Enity.Designer.cs">
       <DependentUpon>201805141222529_Added Employee Enity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805151645562_Added fluent api constraints on the entity.cs" />
+    <Compile Include="Migrations\201805151645562_Added fluent api constraints on the entity.Designer.cs">
+      <DependentUpon>201805151645562_Added fluent api constraints on the entity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EntityDBContext.cs" />
@@ -224,6 +228,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805141222529_Added Employee Enity.resx">
       <DependentUpon>201805141222529_Added Employee Enity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805151645562_Added fluent api constraints on the entity.resx">
+      <DependentUpon>201805151645562_Added fluent api constraints on the entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

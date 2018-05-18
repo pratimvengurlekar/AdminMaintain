@@ -16,6 +16,8 @@ namespace AzureAssignment.Models
         public byte Age { get; set; }
 
         [Display(Name = "Birthdate")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
         public string Address { get; set; }
         [Display(Name ="Is Active")]

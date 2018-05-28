@@ -1,4 +1,5 @@
 ﻿using AzureAssignment.Models;
+using AzureAssignment.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,35 @@ namespace AzureAssignment.Controllers
         }
         public ActionResult New()
         {
-            return View("EmployeeForm",new Employee());
+            return View("EmployeeForm",new EmployeeVM());
         }
 
         [HttpPost]
-        public ActionResult Save(Employee emp)
+        public ActionResult Save(EmployeeVM empvm)
         {
+            if(!ModelState.IsValid)
+            {
+                var vm = new EmployeeVM
+                {
+                    FName = empvm.FName,
+                    LName = empvm.LName,
+                    Address = empvm.Address,
+                    IsActive = empvm.IsActive,
+                    Id = empvm.Id
+
+                };
+                return View("EmployeeForm", vm);
+            }
+            Employee emp = new Employee()
+            {
+                Id = empvm.Id,
+                FName = empvm.FName,
+                LName = empvm.LName,
+                DateOfBirth = empvm.DateOfBirth,
+                Address = empvm.Address,
+                Age = empvm.Age,
+                IsActive = empvm.IsActive
+            };
             if (emp.Id == 0)
             {
                 _context.Employees.Add(emp);
@@ -45,8 +69,16 @@ namespace AzureAssignment.Controllers
             var employee = _context.Employees.SingleOrDefault(x => x.Id == id);
             if (employee == null)
                 return HttpNotFound();
-
-            return View("EmployeeForm",employee);
+            var vm = new EmployeeVM
+            {
+                Id = employee.Id,
+                FName = employee.FName,
+                LName = employee.LName,
+                Address = employee.Address,
+                DateOfBirth = employee.DateOfBirth,
+                IsActive = employee.IsActive
+            };
+            return View("EmployeeForm",vm);
         }
         // GET: Employee
         public ActionResult Index()

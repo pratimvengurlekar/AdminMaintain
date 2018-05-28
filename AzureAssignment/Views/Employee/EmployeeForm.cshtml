@@ -1,4 +1,4 @@
-﻿@model AzureAssignment.Models.Employee
+﻿@model AzureAssignment.ViewModels.EmployeeVM
 @{
     ViewBag.Title = "EmployeeForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
 @using (@Html.BeginForm("Save", "Employee"))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.ValidationSummary(true, "Please fix the following errors.", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(x=>x.FName)
         @Html.TextBoxFor(x=>x.FName, new { @class="form-control"})
@@ -19,10 +19,10 @@
         @Html.LabelFor(x => x.LName)
         @Html.TextBoxFor(x => x.LName, new { @class = "form-control" })
     </div>
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(x => x.Age)
         @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
-    </div>
+    </div>*@
     <div class="form-group">
         @Html.LabelFor(x => x.DateOfBirth)
       @*  @Html.TextBoxFor(x => x.DateOfBirth,"{0:d MMM yyyy}", new { @class = "form-control" })*@
@@ -32,6 +32,7 @@
     <div class="form-group">
         @Html.LabelFor(x => x.Address)
         @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
     </div>
     <div class="checkbox">
         <label>
@@ -41,4 +42,8 @@
   @Html.HiddenFor(m=>m.Id)
     <button type="submit" class="btn btn-primary">Save</button>
 
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }

@@ -47,8 +47,8 @@ namespace AzureAssignment.Controllers
                 LName = empvm.LName,
                 DateOfBirth = empvm.DateOfBirth,
                 Address = empvm.Address,
-                Age = empvm.Age,
-                IsActive = empvm.IsActive
+                IsActive = empvm.IsActive,
+                Age=empvm.Age
             };
             if (emp.Id == 0)
             {
@@ -57,7 +57,13 @@ namespace AzureAssignment.Controllers
             else
             {
                 var employeeinDb = _context.Employees.Single(e => e.Id == emp.Id);
-                TryUpdateModel(employeeinDb);
+                //  TryUpdateModel(employeeinDb,"",new string[] { "FName", "LName", "Age", "DateOfBirth", "Address", "IsActive" });
+                employeeinDb.FName = emp.FName;
+                employeeinDb.LName = emp.LName;
+                employeeinDb.DateOfBirth = emp.DateOfBirth;
+                employeeinDb.Age = emp.Age;
+                employeeinDb.Address = emp.Address;
+                employeeinDb.IsActive = emp.IsActive;
             }
             _context.SaveChanges();
             return   RedirectToAction("Index", "Employee");    

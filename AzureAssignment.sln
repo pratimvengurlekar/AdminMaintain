@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureAssignment", "AzureAssignment\AzureAssignment.csproj", "{4F00A80C-A2F7-4F22-9F27-FF1604D04C6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeExportWebJob", "EmployeeExportWebJob\EmployeeExportWebJob.csproj", "{ED1DBDD7-33EE-423D-A2D3-74111E6A1897}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4F00A80C-A2F7-4F22-9F27-FF1604D04C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F00A80C-A2F7-4F22-9F27-FF1604D04C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F00A80C-A2F7-4F22-9F27-FF1604D04C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1DBDD7-33EE-423D-A2D3-74111E6A1897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1DBDD7-33EE-423D-A2D3-74111E6A1897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1DBDD7-33EE-423D-A2D3-74111E6A1897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1DBDD7-33EE-423D-A2D3-74111E6A1897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

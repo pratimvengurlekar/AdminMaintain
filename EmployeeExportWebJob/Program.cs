@@ -14,6 +14,8 @@ using System.Xml.Serialization;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System.Xml;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace EmployeeExportWebJob
 {
@@ -26,7 +28,7 @@ namespace EmployeeExportWebJob
         static void Main()
         {
             EmployeeDBContext _context = new EmployeeDBContext();
-            var employee = _context.Employees.OrderByDescending(x => x.Id).First();
+            var employee = _context.Employees.OrderBy(x => x.Id).First();
             MemoryStream stream = SerializeToStream(employee);
 
             UploadToEmployeeBlob(stream);
@@ -42,16 +44,19 @@ namespace EmployeeExportWebJob
             cloudBlobContainer.CreateIfNotExists();
             CloudBlockBlob cloudBlockBlob = cloudBlobContainer.GetBlockBlobReference("azassignmentblob");
             cloudBlockBlob.UploadFromStream(stream);
+            
         }
 
         public static MemoryStream SerializeToStream(object o)
         {
-            MemoryStream stream = new MemoryStream();
-            XmlSerializer serializer = new XmlSerializer(typeof(Employee));
-            serializer.Serialize(XmlWriter.Create(stream), o);
+             MemoryStream stream = new MemoryStream();
+           
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, o);
             stream.Flush();
             stream.Seek(0, SeekOrigin.Begin);
             return stream;
+
         }
     }
 }

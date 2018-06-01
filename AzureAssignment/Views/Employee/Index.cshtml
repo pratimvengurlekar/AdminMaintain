@@ -27,7 +27,13 @@
                 <td>@employee.Age</td>
                 <td>@employee.DateOfBirth.ToString("d MMM yyyy")</td>
                 <td>@employee.Address</td>
-                <td>@employee.IsActive</td>
+                @if (@employee.IsActive)
+                {
+                 <td>Yes </td>
+                }
+                else
+                { <td>No</td>
+                }
                 <td>@Html.ActionLink("Edit","Edit",new { id = employee.Id})</td>
                 <td>
                     <button data-employee-id="@employee.Id" class="btn-link js-delete">Delete</button>
